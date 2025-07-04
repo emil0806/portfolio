@@ -1,0 +1,121 @@
+/* Basal layoutstruktur */
+.home {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
+}
+
+/* Header og navigation */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-menu a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+}
+
+.nav-menu a:hover {
+  color: #0077ff;
+}
+
+.social-icons a {
+  margin-left: 15px;
+  font-size: 1.4rem;
+  color: #555;
+  transition: color 0.2s ease;
+}
+
+.social-icons a:hover {
+  color: #000;
+}
+
+/* Indhold under header */
+.editor-container {
+  display: flex;
+  height: calc(100vh - 80px);
+}
+
+/* Venstre side: output */
+.output-box {
+  flex: 1;
+  background-color: white;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.output-box h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #1f2937;
+  transition: all 0.3s ease;
+}
+
+.output-box p {
+  font-size: 1.2rem;
+  color: #374151;
+  max-width: 500px;
+  transition: all 0.3s ease;
+}
+
+/* Højre side: kodeeditor */
+.code-editor {
+  flex: 1;
+  background-color: #1e1e1e;
+  padding: 40px;
+  overflow: auto;
+  font-family: 'Fira Code', monospace;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hver kodeblok (React + CSS) */
+.code-block {
+  margin-bottom: 40px;
+}
+
+.code-label {
+  color: #ccc;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+/* Linjenumre og visuel tilpasning */
+.syntax-box .react-syntax-highlighter-line-number {
+  color: #858585;
+}
+
+/* Gør koden mere læsbar og kompakt */
+.code-editor pre {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.tech-icons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 30px;
+  font-size: 2rem;
+}
