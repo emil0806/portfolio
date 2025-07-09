@@ -1,0 +1,114 @@
+.about-page {
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #1e1e1e;
+}
+
+.about-intro {
+  text-align: center;
+  padding: 40px 20px;
+  flex-shrink: 0;
+}
+
+.about-intro h1 {
+  font-size: 2.5rem;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.about-intro h3 {
+  font-size: 1.1rem;
+  color: #cbd5e1;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.flip-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0;
+  flex-grow: 1;
+  height: 100%;
+}
+
+.flip-card {
+  background: transparent;
+  width: 100%;
+  height: 100%;
+  perspective: 800px; /* <-- tilføj denne linje */
+}
+
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+}
+
+.flip-card:hover .flip-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-front,
+.flip-back {
+  position: absolute;
+  width: 100%;
+  height: 90%;
+  backface-visibility: hidden;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.flip-front {
+  display: flex;
+  flex-direction: row; /* <-- vigtigt! */
+  justify-content: center;
+  align-items: center;
+  background-color: #1e1e1e;
+  gap: 30px;
+  width: 100%;
+  height: 100%;
+}
+
+.vertical-col {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vertical-text {
+  font-family: 'Chewy', cursive;
+  transform: rotate(180deg); /* <- vend teksten opad */
+  white-space: nowrap;
+}
+
+.vertical-text.year {
+  color: #fff;
+  font-size: 2.4rem;
+}
+
+.vertical-text.title {
+  color: #fff; 
+  font-size: 2rem;
+}
+
+.flip-back {
+  background-color: #1e1e1e; /* Bagside lidt lysere mørk */
+  color: white;
+  transform: rotateY(180deg);
+  font-size: 1rem;
+  padding: 20px;
+  text-align: center;
+}
+

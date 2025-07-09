@@ -1,5 +1,5 @@
 import "./Home.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
@@ -18,6 +18,7 @@ import {
   SiKotlin,
   SiGit,
 } from "react-icons/si";
+import Header from "../../components/header/Header";
 
 export default function Home() {
   const [typedCode, setTypedCode] = useState("");
@@ -26,6 +27,7 @@ export default function Home() {
   const [visibleP, setVisibleP] = useState(false);
   const [showImage, setShowImage] = useState(false);
   const [showTechIcons, setShowTechIcons] = useState(false);
+  const codeRef = useRef(null);
 
   const techList = [
     { label: "React", icon: <SiReact title="React" /> },
@@ -59,7 +61,8 @@ export default function Home() {
   ];
 
   return (
-    <div>
+    <div>      
+      <img src="profileImage" style={{ width: '150px', height: '150px', borderRadius: '50%', objectFit: 'cover', display: 'block' }} />
       <h1 style={{ color: '#2563eb', fontSize: '3rem', textAlign: 'center' }}>
         Hi, I'm Emil
       </h1>
@@ -69,7 +72,6 @@ export default function Home() {
       <p style={{ color: '#64748b', fontSize: '1.2rem', textAlign: 'center' }}>
         I strive to build simple and effective solutions
       </p>
-      <img src="profileImage" alt="Me" style={{ width: '150px', height: '150px', borderRadius: '50%', objectFit: 'cover', display: 'block', margin: '0 auto' }} />
       <section className="tech-stack">
         {techList.map((tech, idx) => (
             <div key={idx} style={{ textAlign: "center" }}>
@@ -109,7 +111,7 @@ export default function Home() {
             setShowTechIcons(true);
 
           charIndex++;
-          setTimeout(type, 3);
+          setTimeout(type, 2);
         } else {
           setTimeout(startTyping, 10000);
         }
@@ -121,42 +123,18 @@ export default function Home() {
     startTyping();
   }, []);
 
+  useEffect(() => {
+    if (codeRef.current) {
+      codeRef.current.scrollTo({
+        top: codeRef.current.scrollHeight,
+        behavior: "smooth",
+      });
+    }
+  }, [typedCode]);
+
   return (
     <div className="home">
-      {/* Header */}
-      <header className="header">
-        <div className="nav-container">
-          <nav className="nav-menu">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-          </nav>
-        </div>
-        <div className="social-icons">
-          <a
-            href="https://github.com/dit-brugernavn"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaGithub />
-          </a>
-          <a
-            href="https://linkedin.com/in/dit-brugernavn"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaLinkedin />
-          </a>
-          <a
-            href="https://instagram.com/dit-brugernavn"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FaInstagram />
-          </a>
-        </div>
-      </header>
+      <Header />
 
       <main className="editor-container">
         {/* Venstre side */}
@@ -178,7 +156,7 @@ export default function Home() {
           {visibleH1 && (
             <h1
               style={{
-                color: "#2563eb",
+                color: "#000",
                 fontSize: "3rem",
                 textAlign: "center",
               }}
@@ -189,7 +167,7 @@ export default function Home() {
           {visibleH2 && (
             <h2
               style={{
-                color: "#2563eb",
+                color: "#000",
                 fontSize: "2rem",
                 textAlign: "center",
               }}
@@ -200,7 +178,7 @@ export default function Home() {
           {visibleP && (
             <p
               style={{
-                color: "#64748b",
+                color: "#000",
                 fontSize: "1.2rem",
                 textAlign: "center",
               }}
@@ -239,6 +217,8 @@ export default function Home() {
             wrapLines
             showLineNumbers
             lineNumberStyle={{ color: "#6d6d6d" }}
+            PreTag="div"
+            ref={codeRef}
           >
             {typedCode}
           </SyntaxHighlighter>

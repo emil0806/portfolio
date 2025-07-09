@@ -1,4 +1,3 @@
-/* Basal layoutstruktur */
 .home {
   min-height: 100vh;
   display: flex;
@@ -7,51 +6,11 @@
   background-color: #f7f7f7;
 }
 
-/* Header og navigation */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  background-color: #ffffff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.nav-container {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-}
-
-.nav-menu a {
-  margin: 0 15px;
-  text-decoration: none;
-  color: #333;
-  font-weight: 600;
-}
-
-.nav-menu a:hover {
-  color: #0077ff;
-}
-
-.social-icons a {
-  margin-left: 15px;
-  font-size: 1.4rem;
-  color: #555;
-  transition: color 0.2s ease;
-}
-
-.social-icons a:hover {
-  color: #000;
-}
-
-/* Indhold under header */
 .editor-container {
   display: flex;
   height: calc(100vh - 80px);
 }
 
-/* Venstre side: output */
 .output-box {
   flex: 1;
   background-color: white;
@@ -76,18 +35,17 @@
   transition: all 0.3s ease;
 }
 
-/* Højre side: kodeeditor */
 .code-editor {
   flex: 1;
   background-color: #1e1e1e;
   padding: 40px;
   overflow: auto;
+  overflow-y: auto;
   font-family: 'Fira Code', monospace;
   display: flex;
   flex-direction: column;
 }
 
-/* Hver kodeblok (React + CSS) */
 .code-block {
   margin-bottom: 40px;
 }
@@ -99,12 +57,10 @@
   margin-bottom: 10px;
 }
 
-/* Linjenumre og visuel tilpasning */
 .syntax-box .react-syntax-highlighter-line-number {
   color: #858585;
 }
 
-/* Gør koden mere læsbar og kompakt */
 .code-editor pre {
   margin: 0;
   font-size: 0.95rem;
