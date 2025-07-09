@@ -21,7 +21,8 @@
 }
 
 .about-intro h3 {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  font-weight: normal;
   color: #cbd5e1;
   max-width: 600px;
   margin: 0 auto;
@@ -88,7 +89,7 @@
 }
 
 .vertical-text {
-  font-family: 'Chewy', cursive;
+  font-family: 'Unkempt', cursive;
   transform: rotate(180deg); /* <- vend teksten opad */
   white-space: nowrap;
 }
@@ -101,6 +102,7 @@
 .vertical-text.title {
   color: #fff; 
   font-size: 2rem;
+  font-weight: lighter;
 }
 
 .flip-back {
