@@ -5,6 +5,7 @@ import About from "../../components/about/About";
 import Projects from "../../components/projects/Projects";
 import Resume from "../../components/resume/Resume";
 import Contact from "../../components/contact/Contact";
+import Footer from "../../components/footer/Footer";
 import { Element } from "react-scroll";
 
 import "./Home.css";
@@ -35,6 +36,8 @@ export default function Home() {
       <Element name="contact" className="section">
         <Contact />
       </Element>
+
+      <Footer />
     </div>
   );
 }

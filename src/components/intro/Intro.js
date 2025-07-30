@@ -17,6 +17,7 @@ import {
   SiKotlin,
   SiGit,
 } from "react-icons/si";
+import placeholder from "../../assets/placeholder.mp4";
 
 export default function Intro() {
   const [typedCode, setTypedCode] = useState("");
@@ -62,13 +63,13 @@ export default function Intro() {
     <div>      
       <img src="profileImage" style={{ width: '150px', height: '150px', borderRadius: '50%', objectFit: 'cover', display: 'block' }} />
       <h1 style={{ color: '#2563eb', fontSize: '3rem', textAlign: 'center' }}>
-        Hi, I'm Emil
+        Hi, I am Emil
       </h1>
       <h2 style={{ color: '#2563eb', fontSize: '2rem', textAlign: 'center' }}>
-        I'm a software engineer
+        I am a software engineer
       </h2>
       <p style={{ color: '#64748b', fontSize: '1.2rem', textAlign: 'center' }}>
-        I strive to build simple and effective solutions
+        I strive to build effective solutions
       </p>
       <section className="tech-stack">
         {techList.map((tech, idx) => (
@@ -130,7 +131,7 @@ export default function Intro() {
 
   return (
     <div className="home">
-      <main className="editor-container">
+      <div className="editor-container">
         {/* Venstre side */}
         <div className="output-box">
           {showImage && (
@@ -155,7 +156,7 @@ export default function Intro() {
                 textAlign: "center",
               }}
             >
-              Hi, I'm Emil
+              Hi, I am Emil
             </h1>
           )}
           {visibleH2 && (
@@ -166,7 +167,7 @@ export default function Intro() {
                 textAlign: "center",
               }}
             >
-              I'm a software engineer
+              I am a <span className="highlight">software engineer</span>
             </h2>
           )}
           {visibleP && (
@@ -177,7 +178,7 @@ export default function Intro() {
                 textAlign: "center",
               }}
             >
-              I strive to build simple and effective solutions
+              I strive to build effective solutions
             </p>
           )}
           {showTechIcons && (
@@ -217,7 +218,23 @@ export default function Intro() {
             {typedCode}
           </SyntaxHighlighter>
         </div>
-      </main>
+      </div>
+      <div className="intro-video-section">
+        <h3 className="intro-question">
+          <em>
+            <u>
+              What has had the biggest influence on you as a Software Engineer?
+            </u>
+          </em>
+        </h3>
+
+        <div className="video-placeholder">
+          <video width="100%" controls autoPlay loop playsInline>
+            <source src={placeholder} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
     </div>
   );
 }

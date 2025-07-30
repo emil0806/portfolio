@@ -1,0 +1,32 @@
+.resume-section {
+  padding: 20px 40px;
+  background-color: white;
+  text-align: center;
+}
+
+.resume-header {
+  font-family: 'Inria Serif', serif;
+  font-size: 3rem;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: start;
+}
+
+.resume-box {
+  width: 80%;
+  max-width: 600px;
+  height: 846px;
+  margin: 0 auto;
+  background-color: #1e1e1e;
+  overflow: hidden;
+}
+
+.resume-download {
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: underline;
+  font-size: 1rem;
+  font-weight: 500;
+  color: black;
+  cursor: pointer;
+}

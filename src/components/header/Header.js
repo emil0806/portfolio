@@ -6,6 +6,7 @@ import "./Header.css";
 export default function Header() {
   return (
     <header className="header">
+      <div /> {/* Tom venstre side */}
       <div className="nav-container">
         <nav className="nav-menu">
           <ScrollLink
@@ -13,6 +14,7 @@ export default function Header() {
             activeClass="active"
             spy={true}
             smooth={true}
+            offset={-100}
             duration={500}
           >
             Home
@@ -22,6 +24,7 @@ export default function Header() {
             activeClass="active"
             spy={true}
             smooth={true}
+            offset={-100}
             duration={500}
           >
             About
@@ -31,6 +34,7 @@ export default function Header() {
             activeClass="active"
             spy={true}
             smooth={true}
+            offset={-100}
             duration={500}
           >
             Projects
@@ -40,6 +44,7 @@ export default function Header() {
             activeClass="active"
             spy={true}
             smooth={true}
+            offset={-100}
             duration={500}
           >
             Resume
@@ -49,13 +54,13 @@ export default function Header() {
             activeClass="active"
             spy={true}
             smooth={true}
+            offset={-100}
             duration={500}
           >
             Contact
           </ScrollLink>
         </nav>
       </div>
-
       <div className="social-icons">
         <a
           href="https://github.com/dit-brugernavn"

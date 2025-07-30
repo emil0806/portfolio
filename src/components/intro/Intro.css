@@ -3,7 +3,6 @@
   display: flex;
   flex-direction: column;
   font-family: Arial, sans-serif;
-  background-color: #f7f7f7;
 }
 
 .editor-container {
@@ -13,7 +12,6 @@
 
 .output-box {
   flex: 1;
-  background-color: white;
   padding: 60px;
   display: flex;
   flex-direction: column;
@@ -23,17 +21,35 @@
 
 .output-box h1 {
   font-size: 2.5rem;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   color: #1f2937;
   transition: all 0.3s ease;
+  margin-top: 10px;
+  font-weight: 900;
 }
+
+.output-box h2 {
+  margin-bottom: 10px;
+  color: #1f2937;
+  transition: all 0.3s ease;
+  margin-top: 0px;
+}
+
 
 .output-box p {
   font-size: 1.2rem;
   color: #374151;
   max-width: 500px;
   transition: all 0.3s ease;
+  margin-top: 10px;
+  font-style: italic;
 }
+
+.highlight {
+  color: #0070f3; /* fx blå */
+  font-weight: bold;
+}
+
 
 .code-editor {
   flex: 1;
@@ -75,3 +91,29 @@
   margin-top: 30px;
   font-size: 2rem;
 }
+
+.intro-video-section {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.intro-question {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.video-placeholder {
+  width: 700px;
+  height: 400px;
+  margin: 0 auto;
+  background-color: #1e1e1e;
+  color: white;
+  font-size: 1rem;
+}
+
+.video-placeholder video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
