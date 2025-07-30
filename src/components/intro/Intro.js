@@ -110,7 +110,7 @@ export default function Intro() {
             setShowTechIcons(true);
 
           charIndex++;
-          setTimeout(type, 2);
+          setTimeout(type, 1);
         }
       };
 
