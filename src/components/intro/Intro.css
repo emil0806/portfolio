@@ -1,0 +1,77 @@
+.home {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
+}
+
+.editor-container {
+  display: flex;
+  height: calc(100vh - 80px);
+}
+
+.output-box {
+  flex: 1;
+  background-color: white;
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.output-box h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #1f2937;
+  transition: all 0.3s ease;
+}
+
+.output-box p {
+  font-size: 1.2rem;
+  color: #374151;
+  max-width: 500px;
+  transition: all 0.3s ease;
+}
+
+.code-editor {
+  flex: 1;
+  background-color: #1e1e1e;
+  padding: 40px;
+  overflow: auto;
+  overflow-y: auto;
+  font-family: 'Fira Code', monospace;
+  display: flex;
+  flex-direction: column;
+}
+
+.code-block {
+  margin-bottom: 40px;
+}
+
+.code-label {
+  color: #ccc;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.syntax-box .react-syntax-highlighter-line-number {
+  color: #858585;
+}
+
+.code-editor pre {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.tech-icons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 30px;
+  font-size: 2rem;
+}

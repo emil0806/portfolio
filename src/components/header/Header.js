@@ -1,19 +1,61 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link as ScrollLink } from "react-scroll";
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
-import "./Header.css"; // valgfrit – opret denne hvis du vil style separat
+import "./Header.css";
 
 export default function Header() {
   return (
     <header className="header">
       <div className="nav-container">
         <nav className="nav-menu">
-          <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
-          <Link to="/projects">Projects</Link>
-          <Link to="/contact">Contact</Link>
+          <ScrollLink
+            to="intro"
+            activeClass="active"
+            spy={true}
+            smooth={true}
+            duration={500}
+          >
+            Home
+          </ScrollLink>
+          <ScrollLink
+            to="about"
+            activeClass="active"
+            spy={true}
+            smooth={true}
+            duration={500}
+          >
+            About
+          </ScrollLink>
+          <ScrollLink
+            to="projects"
+            activeClass="active"
+            spy={true}
+            smooth={true}
+            duration={500}
+          >
+            Projects
+          </ScrollLink>
+          <ScrollLink
+            to="resume"
+            activeClass="active"
+            spy={true}
+            smooth={true}
+            duration={500}
+          >
+            Resume
+          </ScrollLink>
+          <ScrollLink
+            to="contact"
+            activeClass="active"
+            spy={true}
+            smooth={true}
+            duration={500}
+          >
+            Contact
+          </ScrollLink>
         </nav>
       </div>
+
       <div className="social-icons">
         <a
           href="https://github.com/dit-brugernavn"
