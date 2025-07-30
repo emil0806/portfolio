@@ -16,7 +16,6 @@
     gap: 20px;
 }
 
-
 .filter-btn {
   background: none;
   border: none;
@@ -83,13 +82,25 @@
 .project-card-front {
   font-size: 1rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.project-card-front h3 {
+  font-size: 1.6rem;
+  margin-bottom: 0px;
+  font-family: 'Inria Serif', serif;
 }
 
 .project-card-front em {
   display: block;
   margin-top: 5px;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   font-style: italic;
+  font-weight: lighter;
 }
 
 .project-card-back {
@@ -99,6 +110,37 @@
   background-color: #ffffff;
   color: #111;
   text-align: center;
+}
+
+.project-card-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-grow: 1; 
+}
+
+.project-card-description {
+  display: flex;
+  justify-content: end;
+}
+
+.project-description {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #ffffff;
+  padding: 0 15px;
+  align-self: stretch;
+  text-align: center;
+  margin-top: auto;
+}
+
+.project-tech-icons {
+  font-size: 2rem;
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+  flex-wrap: wrap;
 }
 
 /* Video Box Placeholder */
