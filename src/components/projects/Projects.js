@@ -110,6 +110,7 @@ const allProjects = [
 
 export default function Projects() {
   const [filter, setFilter] = useState("All");
+  const [hoveredCard, setHoveredCard] = useState(null); // Track hovered card
 
   const filteredProjects =
     filter === "All"
@@ -134,7 +135,12 @@ export default function Projects() {
 
       <div className="projects-grid">
         {filteredProjects.map((project, index) => (
-          <div key={index} className="project-card">
+          <div
+            key={index}
+            className="project-card"
+            onMouseEnter={() => setHoveredCard(index)}
+            onMouseLeave={() => setHoveredCard(null)}
+          >
             <div className="project-card-inner">
               <div className="project-card-front">
                 <div className="project-card-header">
@@ -151,21 +157,23 @@ export default function Projects() {
                 </div>
               </div>
               <div className="project-card-back">
-                <iframe
-                  width="100%"
-                  height="auto"
-                  maxHeight="300px"
-                  src={project.video}
-                  title={project.title}
-                  frameBorder="0"
-                  allow="autoplay; fullscreen"
-                  allowFullScreen
-                  style={{
-                    background: "#fff",
-                    display: "block",
-                    aspectRatio: project.aspectRatio || "640 / 360",
-                  }}
-                />
+                {hoveredCard === index && project.video && (
+                  <iframe
+                    width="100%"
+                    height="auto"
+                    maxHeight="300px"
+                    src={project.video}
+                    title={project.title}
+                    frameBorder="0"
+                    allow="autoplay; fullscreen"
+                    allowFullScreen
+                    style={{
+                      background: "#fff",
+                      display: "block",
+                      aspectRatio: project.aspectRatio || "640 / 360",
+                    }}
+                  />
+                )}
               </div>
             </div>
           </div>
