@@ -1,17 +1,39 @@
 .about-section {
   padding: 60px 0px;
-  background-color: white;
+  background-color: #1e1e1e;
 }
 
 .about-header {
   text-align: start;
-  font-size: 3rem;
   font-weight: bold;
   margin-bottom: 10px;
   font-family: 'Inria Serif', serif;
   padding-left: 40px;
   margin-top: 0px;
+  width: 100%;
+  min-height: 80px;
 }
+
+.about-header-typing {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 2.2s steps(30, end) forwards;
+  width: 100%;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 80ch; /* justér baseret på længden af linjen */
+  }
+}
+
+#about > div.about-header > div > code > span {
+  font-size: 2rem !important; /* Gør teksten større */
+}
+
 
 .about-content {
   display: flex;
@@ -41,9 +63,13 @@
 }
 
 .about-video h3 {
-  font-style: italic;
-  text-decoration: underline;
   margin-bottom: 20px;
+  color: var(--comment-color);
+  font-size: 1rem;
+}
+
+#about > div.about-content > div.about-video > div:nth-child(1) > code > span > span {
+  font-size: 1rem;
 }
 
 .video-box {
@@ -66,126 +92,6 @@
   object-fit: cover;
 }
 
-
-/* Timeline styles */
-.timeline-container {
-  position: relative;
-  width: 100%;
-  margin: 40px 0 0 0;
-  padding: 0;
-  min-height: 180px;
-  overflow-x: auto;
-}
-
-.timeline-line {
-  position: absolute;
-  top: 60px;
-  left: 40px;
-  right: 40px;
-  width: auto;
-  height: 4px;
-  background: #1e1e1e;
-  z-index: 0;
-}
-
-.timeline-dots-absolute {
-  position: absolute;
-  top: 53px; /* Samme som .timeline-line top */
-  left: 0;
-  width: 100%;
-  height: 18px; /* Højde = dot størrelse */
-  pointer-events: none;
-}
-
-.timeline-sections {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  position: relative;
-  z-index: 1;
-  width: 100%;
-}
-
-.timeline-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  min-width: 120px;
-  flex: 1;
-}
-
-.timeline-marker {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 90px; /* Push marker below the line */
-}
-
-.timeline-years {
-  font-size: 1.1em;
-  font-weight: bold;
-  color: #1e1e1e;
-  margin-bottom: 2px;
-}
-
-.timeline-title {
-  font-size: 1em;
-  color: #555;
-  font-style: italic;
-}
-
-.timeline-dot {
-  position: absolute;
-  top: 0;
-  width: 18px;
-  height: 18px;
-  background: #1e1e1e;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background 0.2s;
-  z-index: 2;
-  pointer-events: auto;
-}
-
-.timeline-dot:hover {
-  background: #555;
-}
-
-.timeline-tooltip {
-  position: absolute;
-  top: -48px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: white;
-  color: #1e1e1e;
-  padding: 8px 14px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(30,30,30,0.15);
-  font-size: 0.95em;
-  white-space: nowrap;
-  z-index: 10;
-  pointer-events: none;
-}
-
-/* Remove flip-card styles */
-.timeline-grid,
-.flip-card,
-.flip-card-inner,
-.flip-card-front,
-.flip-card-back,
-.card-years,
-.card-title,
-.first-year,
-.to,
-.second-year,
-.flip-card:hover .flip-card-inner,
-.flip-card-front,
-.flip-card-back,
-.card-back-content {
-  display: none !important;
-}
-
 /* Carousel styles */
 .carousel-container {
   width: 100%;
@@ -199,7 +105,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: white;
+  background: #1e1e1e;
 }
 
 .carousel-track {
@@ -281,17 +187,19 @@
 .carousel-active-info {
   width: 100%;
   text-align: center;
+  color: #eee;
+
 }
 
 .carousel-active-period {
   font-size: 1.4em;
   font-weight: bold;
-  color: #1e1e1e;
+  color: #eee;
   margin-bottom: 6px;
 }
 
 .carousel-active-title {
   font-size: 1.2em;
-  color: #555;
+  color: #eee;
   font-style: italic;
 }

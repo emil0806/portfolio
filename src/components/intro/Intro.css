@@ -17,6 +17,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #fff;
 }
 
 .output-box h1 {
@@ -117,3 +118,6 @@
   object-fit: cover;
 }
 
+#root > div > div:nth-child(2) > div > div.intro-video-section > div:nth-child(1) > code > span > span {
+  font-size: 1rem;
+}

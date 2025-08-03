@@ -220,13 +220,24 @@ export default function Intro() {
         </div>
       </div>
       <div className="intro-video-section">
-        <h3 className="intro-question">
-          <em>
-            <u>
-              What has had the biggest influence on you as a Software Engineer?
-            </u>
-          </em>
-        </h3>
+        <SyntaxHighlighter
+          language="jsx"
+          style={vscDarkPlus}
+          wrapLines
+          lineNumberStyle={{ color: "#6d6d6d" }}
+          PreTag="div"
+          ref={codeRef}
+          customStyle={{
+            textAlign: "center",
+            padding: "20px",
+            borderRadius: "10px",
+            margin: "0",
+          }}
+        >
+          {
+            "/* What has had the biggest influence on you as a Software Engineer? */"
+          }
+        </SyntaxHighlighter>
 
         <div className="video-placeholder">
           <video width="100%" controls loop playsInline>

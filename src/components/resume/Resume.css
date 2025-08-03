@@ -1,15 +1,37 @@
 .resume-section {
   padding: 20px 40px;
-  background-color: white;
+  background-color: #1e1e1e;
   text-align: center;
 }
 
 .resume-header {
-  font-family: 'Inria Serif', serif;
-  font-size: 3rem;
   margin-bottom: 40px;
   display: flex;
   justify-content: start;
+  font-weight: bold;
+  min-height: 80px;
+}
+
+
+.resume-header-typing {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 2.2s steps(30, end) forwards;
+  width: 100%;
+}
+
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 80ch; /* justér baseret på længden af linjen */
+  }
+}
+
+#resume > div.resume-header > div > code > span {
+  font-size: 2rem !important; /* Gør teksten større */
 }
 
 .resume-box {

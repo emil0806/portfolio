@@ -1,17 +1,39 @@
 .contact-section {
   text-align: center;
   padding: 40px 20px 60px 20px;
+  background-color: #1e1e1e;
 }
 
 .contact-header {
   text-align: start;
-  font-size: 3rem;
   font-weight: bold;
   margin-bottom: 10px;
-  font-family: 'Inria Serif', serif;
   padding-left: 40px;
   margin-top: 0px;
   margin-bottom: 50px;
+  min-height: 80px;
+
+}
+
+.contact-header-typing {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 2.2s steps(30, end) forwards;
+  width: 100%;
+}
+
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 80ch;
+  }
+}
+
+#contact > div.contact-header > div > code > span {
+  font-size: 2rem !important; /* Gør teksten større */
 }
 
 .contact-content {

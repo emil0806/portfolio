@@ -1,6 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import "./About.css";
 import placeholder from "../../assets/placeholder.mp4";
+import { useInView } from "react-intersection-observer";
 
 const timeline = [
   {
@@ -39,93 +42,123 @@ const timeline = [
 const allDots = [
   {
     year: 1999,
-    label: "Born on 8th of June 1999 near Copenhagen",
+    label: `Born on 8th of June 1999 
+    near Copenhagen`,
+    period: `Early Years`,
+  },
+  {
+    year: 2001,
+    label: `Moved to the south of 
+    Jylland`,
     period: "Early Years",
   },
-  { year: 2001, label: "Moved to the south of Jylland", period: "Early Years" },
   {
     year: 2004,
-    label: "Began playning badminton, and developed a passion for sport",
+    label: `Began playning badminton, 
+    and developed a passion for 
+    sport`,
     period: "Early Years",
   },
   {
     year: 2005,
-    label: "Started in Elementary School",
+    label: `Started in Elementary 
+    School`,
     period: "Elementary School",
   },
   {
     year: 2012,
-    label:
-      "By the time I finished 7th grade I had passed the first year of Mathematics on Gymnasium level.",
+    label: `By the time I finished 
+      7th grade I had passed the 
+      first year of Mathematics on 
+      Gymnasium level.`,
     period: "Elementary School",
   },
   {
     year: 2014,
-    label: "Won the National Youth Championship in Badminton",
+    label: `Won the National Youth 
+    Championship in Badminton`,
     period: "Elementary School",
   },
   {
     year: 2015,
-    label: "Went to Ikast-Idrætsefterskole",
+    label: `Went to Idrætsefterskole`,
     period: "College & Gymnasium",
   },
   {
     year: 2016,
-    label:
-      "Attended Sports College in Ikast to combine academics and competive sports.",
+    label: `Attended Sports College 
+      in Ikast to combine academics
+      and competive sports.`,
     period: "College & Gymnasium",
   },
   {
     year: 2019,
-    label:
-      "Graduated Gymnasium after having spent three years balancing academics while playing badminton at some of the highest level in Denmark.",
+    label: `Graduated Gymnasium after 
+      having spent three years 
+      balancing academics while 
+      playing badminton at some of 
+      the highest level in Denmark.`,
     period: "College & Gymnasium",
   },
   {
     year: 2019,
-    label:
-      "Started my carrer as a professional athlete focusing completely on badminton.",
+    label: `Started my carrer as a 
+      professional athlete 
+      focusing completely on 
+      badminton.`,
     period: "Professional Athlete",
   },
   {
     year: 2020,
-    label:
-      "Played in both the Danish Badminton League and the Bundesliga in Germany.",
+    label: `Played in both the Danish 
+      Badminton League and the 
+      Bundesliga in Germany.`,
     period: "Professional Athlete",
   },
   {
     year: 2021,
-    label:
-      "Travelled around Europe to play in international tournaments, and won multiple titles.",
+    label: `Travelled around Europe 
+      to play in international 
+      tournaments, and won 
+      multiple titles.`,
     period: "Professional Athlete",
   },
   {
     year: 2021,
-    label:
-      "Played in some of the biggest tournaments in the world like All England and Denmark Open.",
+    label: `Played in some of the 
+    biggest tournaments in the 
+    world like All England and 
+    Denmark Open.`,
     period: "Professional Athlete",
   },
   {
     year: 2022,
-    label: "Started my passion for technology as a hobby.",
+    label: `Started my passion for 
+    technology as a hobby.`,
     period: "Professional Athlete",
   },
   {
     year: 2022,
-    label:
-      "Part of founding af family businnes that in under two years grew to a yearly revenue over a million.",
+    label: `Part of founding a 
+      family businnes that in under 
+      two years grew to a yearly 
+      revenue over a million.`,
     period: "DTU & Company Owner",
   },
   {
     year: 2023,
-    label:
-      "Ended my career due to a hip injury with a carrere high ranking as number 50 in the world.",
+    label: `Ended my career due to 
+      a hip injury with a career 
+      highest ranking as number 50 
+      in the world.`,
     period: "Professional Athlete",
   },
   {
     year: 2023,
-    label:
-      "Decided to pursue my other passion in technology by enrolling in Software Engineering at DTU.",
+    label: `Decided to pursue my 
+      other passion in technology 
+      by enrolling in 
+      Software Engineering at DTU.`,
     period: "DTU & Company Owner",
   },
 ];
@@ -134,6 +167,36 @@ export default function About() {
   const [currentIdx, setCurrentIdx] = useState(Math.floor(allDots.length / 2));
   const carouselRef = useRef();
   const dragState = useRef({ dragging: false, startX: 0, lastX: 0 });
+  const codeRef = useRef(null);
+
+  const [typedText, setTypedText] = useState("");
+  const aboutHeader = `const sectionHeader = "ABOUT ME";`;
+
+  const aboutText = `I'm a curious and driven Software Engineer with a 
+  strong interest in both technology and people.
+  I enjoy working on projects where I can combine technical precision
+  with creative and logical thinking.
+  I thrive in collaborative environments 
+  where we can make each other even better.
+  Complex problems excite me, 
+  but I always try to find simple, elegant and effective solutions.
+  One of my main goals is building software, 
+  where I can directly impact and improve people's lives.`;
+
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.2,
+  });
+
+  useEffect(() => {
+    if (inView && typedText.length < aboutHeader.length) {
+      const timeout = setTimeout(() => {
+        setTypedText(aboutHeader.slice(0, typedText.length + 1));
+      }, 15); // hastighed
+
+      return () => clearTimeout(timeout);
+    }
+  }, [inView, typedText, aboutHeader]);
 
   useEffect(() => {
     const handleMouseDown = (e) => {
@@ -185,29 +248,63 @@ export default function About() {
   );
 
   return (
-    <section className="about-section" id="about">
-      <h2 className="about-header">ABOUT</h2>
+    <section className="about-section" id="about" ref={ref}>
+      <div className="about-header">
+        <SyntaxHighlighter
+          language="jsx"
+          style={vscDarkPlus}
+          wrapLines
+          lineNumberStyle={{ color: "#6d6d6d" }}
+          PreTag="div"
+          ref={codeRef}
+          customStyle={{
+            textAlign: "start",
+            padding: "20px",
+            borderRadius: "10px",
+            margin: "0",
+          }}
+        >
+          {typedText}
+        </SyntaxHighlighter>
+      </div>
 
       <div className="about-content">
         <div className="about-text">
-          <p>
-            I'm a curious and driven Software Engineer with a strong interest in
-            both technology and people. I enjoy working on projects where I can
-            combine technical precision with creative and logical thinking, and
-            I thrive in collaborative environments where we can make eachother
-            even better. Complex problems excites me, but I always try to find
-            simple, elegang and effective solutions. One of my main goals is
-            building software where I can directly impact and improve people's
-            life
-          </p>
+          <SyntaxHighlighter
+            language="jsx"
+            style={vscDarkPlus}
+            wrapLines
+            lineNumberStyle={{ color: "#6d6d6d" }}
+            PreTag="div"
+            ref={codeRef}
+            customStyle={{
+              textAlign: "center",
+              padding: "20px",
+              borderRadius: "10px",
+              margin: "0",
+            }}
+          >
+            {aboutText}
+          </SyntaxHighlighter>
         </div>
 
         <div className="about-video">
-          <h3>
-            <em>
-              <u>Why did you decide to become a Software Engineer?</u>
-            </em>
-          </h3>
+          <SyntaxHighlighter
+            language="jsx"
+            style={vscDarkPlus}
+            wrapLines
+            lineNumberStyle={{ color: "#6d6d6d" }}
+            PreTag="div"
+            ref={codeRef}
+            customStyle={{
+              textAlign: "center",
+              padding: "20px",
+              borderRadius: "10px",
+              margin: "0",
+            }}
+          >
+            {"/* Why did you choose to become a software engineer? */"}
+          </SyntaxHighlighter>
           <div className="video-box">
             <video width="100%" controls loop playsInline>
               <source src={placeholder} type="video/mp4" />
@@ -268,9 +365,29 @@ export default function About() {
                   translate: "0 -50%",
                 }}
               >
-                <div className="carousel-years">{item.year}</div>
-                <div className="carousel-description">{item.label}</div>
-                <div className="carousel-period-label">{item.period}</div>
+                <SyntaxHighlighter
+                  language="jsx"
+                  style={vscDarkPlus}
+                  customStyle={{
+                    padding: "15px",
+                    borderRadius: "10px",
+                    fontSize: "0.95rem",
+                    width: "260px",
+                    height: "300px",
+                    textAlign: "start",
+                    display: "flex",
+                    alignItems: "center",
+                    whiteSpace: "pre-wrap",
+                    overflowWrap: "break-word",
+                    wordBreak: "break-word",
+                  }}
+                >
+                  {`{
+  year: ${item.year},
+  label: \`${item.label}\`,
+  period: \`${item.period}\`,
+}`}
+                </SyntaxHighlighter>
               </div>
             );
           })}

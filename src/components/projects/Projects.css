@@ -1,12 +1,33 @@
 .projects-section {
   padding: 0px 40px 0px 40px;
-  background-color: white;
+  background-color: #1e1e1e;
 }
 
 .projects-header {
-  font-family: 'Inria Serif', serif;
-  font-size: 3rem;
   margin-bottom: 20px;
+  font-weight: bold;
+  min-height: 80px;
+}
+
+.project-header-typing {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 2.2s steps(30, end) forwards;
+  width: 100%;
+}
+
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 80ch; /* justér baseret på længden af linjen */
+  }
+}
+
+#projects > div.projects-header > div > code > span {
+  font-size: 2rem !important; /* Gør teksten større */
 }
 
 .filter-bar {
@@ -40,9 +61,10 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 40px;
-  margin-bottom: 80px;
+  margin-bottom: 30px;
   justify-content: center;
   align-items: center;
+  background-color: #1e1e1e;
 }
 
 /* Flip Card Styles */
@@ -183,3 +205,7 @@
   background: #fff !important;
 }
 
+
+#projects > div.project-video-section > div:nth-child(1) > code > span > span {
+  font-size: 1rem;
+}

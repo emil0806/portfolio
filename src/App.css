@@ -1,18 +1,31 @@
 .App {
   text-align: center;
-  background-color: #ffffff;
+  background-color: #1e1e1e;
 
 }
 
 html {
   scroll-behavior: smooth;
-  background-color: #ffffff;
+  background-color: #1e1e1e;
 
 }
 
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
-  background-color: #ffffff;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  background-color: #1e1e1e;
   color: #111;
+}
+
+
+:root {
+  --primary-color: #569cd6;
+  --background-color: #1e1e1e;
+  --text-color: #d4d4d4;
+  --keyword-color: #569cd6;
+  --string-color: #ce9178;
+  --function-color: #dcdcaa;
+  --variable-color: #9cdcfe;
+  --comment-color: #6a9955;
+  --type-color: #4ec9b0;
 }

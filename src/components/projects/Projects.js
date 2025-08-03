@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Projects.css";
 import {
   SiReact,
@@ -16,6 +16,10 @@ import {
   SiOpencv,
   SiFirebase,
 } from "react-icons/si";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { useInView } from "react-intersection-observer";
+import placeholder from "../../assets/placeholder.mp4";
 
 const techIcons = {
   Python: <SiPython title="Python" />,
@@ -106,7 +110,26 @@ const allProjects = [
 
 export default function Projects() {
   const [filter, setFilter] = useState("All");
-  const [hoveredCard, setHoveredCard] = useState(null); // Track hovered card
+  const [hoveredCard, setHoveredCard] = useState(null);
+
+  const [typedText, setTypedText] = useState("");
+  const projectsHeader = `const sectionHeader = "PROJECTS";`;
+  const codeRef = useRef(null);
+
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.2,
+  });
+
+  useEffect(() => {
+    if (inView && typedText.length < projectsHeader.length) {
+      const timeout = setTimeout(() => {
+        setTypedText(projectsHeader.slice(0, typedText.length + 1));
+      }, 15); // hastighed
+
+      return () => clearTimeout(timeout);
+    }
+  }, [inView, typedText, projectsHeader]);
 
   const filteredProjects =
     filter === "All"
@@ -115,7 +138,25 @@ export default function Projects() {
 
   return (
     <section className="projects-section" id="projects">
-      <h2 className="projects-header">PROJECTS</h2>
+      <div className="projects-header" ref={ref}>
+        <SyntaxHighlighter
+          language="jsx"
+          style={vscDarkPlus}
+          wrapLines
+          lineNumberStyle={{ color: "#6d6d6d" }}
+          PreTag="div"
+          className="project-header-typing"
+          ref={codeRef}
+          customStyle={{
+            padding: "20px",
+            borderRadius: "10px",
+            margin: "0",
+            width: "100%",
+          }}
+        >
+          {typedText}
+        </SyntaxHighlighter>
+      </div>
 
       <div className="filter-bar">
         {["All", "School", "Own", "Work"].map((f) => (
@@ -174,6 +215,31 @@ export default function Projects() {
             </div>
           </div>
         ))}
+      </div>
+      <div className="project-video-section">
+        <SyntaxHighlighter
+          language="jsx"
+          style={vscDarkPlus}
+          wrapLines
+          lineNumberStyle={{ color: "#6d6d6d" }}
+          PreTag="div"
+          ref={codeRef}
+          customStyle={{
+            textAlign: "center",
+            padding: "20px",
+            borderRadius: "10px",
+            margin: "0",
+          }}
+        >
+          {"/* What project are you most proud of - and why? */"}
+        </SyntaxHighlighter>
+
+        <div className="video-placeholder">
+          <video width="100%" controls loop playsInline>
+            <source src={placeholder} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
       </div>
     </section>
   );
