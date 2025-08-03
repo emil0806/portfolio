@@ -67,100 +67,231 @@
 }
 
 
-/* Flip Card Grid */
-
-.timeline-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 0px;
-}
-
-.flip-card {
-  background-color: transparent;
-  perspective: 1000px;
+/* Timeline styles */
+.timeline-container {
+  position: relative;
   width: 100%;
-  height: 400px;
+  margin: 40px 0 0 0;
+  padding: 0;
+  min-height: 180px;
+  overflow-x: auto;
 }
 
-.flip-card-inner {
+.timeline-line {
+  position: absolute;
+  top: 60px;
+  left: 40px;
+  right: 40px;
+  width: auto;
+  height: 4px;
+  background: #1e1e1e;
+  z-index: 0;
+}
+
+.timeline-dots-absolute {
+  position: absolute;
+  top: 53px; /* Samme som .timeline-line top */
+  left: 0;
+  width: 100%;
+  height: 18px; /* Højde = dot størrelse */
+  pointer-events: none;
+}
+
+.timeline-sections {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.timeline-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  min-width: 120px;
+  flex: 1;
+}
+
+.timeline-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 90px; /* Push marker below the line */
+}
+
+.timeline-years {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #1e1e1e;
+  margin-bottom: 2px;
+}
+
+.timeline-title {
+  font-size: 1em;
+  color: #555;
+  font-style: italic;
+}
+
+.timeline-dot {
+  position: absolute;
+  top: 0;
+  width: 18px;
+  height: 18px;
+  background: #1e1e1e;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s;
+  z-index: 2;
+  pointer-events: auto;
+}
+
+.timeline-dot:hover {
+  background: #555;
+}
+
+.timeline-tooltip {
+  position: absolute;
+  top: -48px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  color: #1e1e1e;
+  padding: 8px 14px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(30,30,30,0.15);
+  font-size: 0.95em;
+  white-space: nowrap;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Remove flip-card styles */
+.timeline-grid,
+.flip-card,
+.flip-card-inner,
+.flip-card-front,
+.flip-card-back,
+.card-years,
+.card-title,
+.first-year,
+.to,
+.second-year,
+.flip-card:hover .flip-card-inner,
+.flip-card-front,
+.flip-card-back,
+.card-back-content {
+  display: none !important;
+}
+
+/* Carousel styles */
+.carousel-container {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin: 0 0 0 0;
+  user-select: none;
+  cursor: grab;
+  height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+}
+
+.carousel-track {
   position: relative;
   width: 100%;
   height: 100%;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
 }
 
-.flip-card-front {
-  background-color: #1e1e1e;
+.carousel-card {
+  width: 200px;
+  min-width: 200px;
+  height: 220px;
+  margin: 0 0;
+  background: #1e1e1e;
   color: white;
-  font-style: italic;
-  font-size: 1.1rem;
+  border-radius: 14px;
+  box-shadow: 0 4px 24px rgba(30,30,30,0.18);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding-bottom: 10px;
-}
-
-.card-years {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-}
-
-.card-title {
-  font-style: normal;
-  margin-top: auto;
-}
-
-.first-year {
-    font-size: 1.6em;
-    font-style: italic;
-    margin-bottom: 10px;
-}
-
-.to {
-    font-style: italic;
-}
-
-.second-year {
-    font-size: 1.6em;
-    font-style: italic;
-    margin-top: 10px;
-}
-
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
-}
-
-.flip-card-front,
-.flip-card-back {
+  justify-content: center;
+  transition:
+    filter 0.3s,
+    transform 0.4s cubic-bezier(.4,0,.2,1),
+    box-shadow 0.3s,
+    opacity 0.3s;
+  will-change: transform, opacity;
   position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: center center;
+  opacity: 1;
+  font-size: 0.95em;
+  padding: 0 10px;
+}
+
+.carousel-card.focused {
+  box-shadow: 0 8px 32px rgba(30,30,30,0.22);
+  opacity: 1;
+  filter: none;
+  pointer-events: auto;
+}
+
+.carousel-card.near {
+  opacity: 0.85;
+  filter: blur(0.6px) brightness(0.95);
+  pointer-events: none;
+  box-shadow: 0 4px 18px rgba(30,30,30,0.15);
+}
+
+.carousel-card.mid {
+  opacity: 0.8;
+  filter: blur(0.8px) brightness(0.92);
+  pointer-events: none;
+  box-shadow: 0 2px 12px rgba(30,30,30,0.10);
+}
+
+.carousel-card.side {
+  opacity: 0.6;
+  filter: blur(1px) brightness(0.88);
+  pointer-events: none;
+}
+
+.carousel-years {
+  font-size: 1em;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 4px;
+  margin-top: 4px;
+}
+
+.carousel-description {
+  font-size: 0.95em;
+  color: #eee;
+  text-align: center;
+  padding: 0 8px;
+}
+
+.carousel-active-info {
   width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.flip-card-back {
-  background-color: white;
-  color: #111;
-  transform: rotateY(180deg);
   text-align: center;
-  font-size: 1rem;
-  line-height: 1.4;
 }
 
-.flip-card-back p {
+.carousel-active-period {
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #1e1e1e;
+  margin-bottom: 6px;
+}
+
+.carousel-active-title {
+  font-size: 1.2em;
+  color: #555;
   font-style: italic;
-}
-
-.card-back-content {
-  padding: 8px;
-  text-align: center;
-  overflow-y: auto;
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./About.css";
 import placeholder from "../../assets/placeholder.mp4";
 
@@ -35,7 +35,155 @@ const timeline = [
   },
 ];
 
+// Alle prikker med årstal og tekst
+const allDots = [
+  { year: 1999, label: "Born on 8th of June 1999 near Copenhagen" },
+  { year: 2001, label: "Moved to the south of Jylland" },
+  {
+    year: 2004,
+    label: "Began playning badminton, and developed a passion for sport",
+  },
+  { year: 2005, label: "Started in Elementary School" },
+  {
+    year: 2012,
+    label:
+      "By the time I finished 7th grade I had passed the first year of Mathematics on Gymnasium level.",
+  },
+  { year: 2014, label: "Won the National Youth Championship in Badminton" },
+  { year: 2015, label: "Went to Ikast-Idrætsefterskole" },
+  {
+    year: 2016,
+    label:
+      "Attended Sports College in Ikast to combine academics and competive sports.",
+  },
+  {
+    year: 2019,
+    label:
+      "Graduated Gymnasium after having spent three years balancing academics while playing badminton at some of the highest level in Denmark.",
+  },
+  {
+    year: 2019,
+    label:
+      "Started my carrer as a professional athlete focusing completely on badminton.",
+  },
+  {
+    year: 2020,
+    label:
+      "Played in both the Danish Badminton League and the Bundesliga in Germany.",
+  },
+  {
+    year: 2021,
+    label:
+      "Travelled around Europe to play in international tournaments, and won multiple titles.",
+  },
+  {
+    year: 2021,
+    label:
+      "Played in some of the biggest tournaments in the world like All England and Denmark Open.",
+  },
+  { year: 2022, label: "Started my passion for technology as a hobby." },
+  {
+    year: 2022,
+    label:
+      "Part of founding af family businnes that in under two years grew to a yearly revenue over a million.",
+  },
+  {
+    year: 2023,
+    label:
+      "Ended my career due to a hip injury with a carrere high ranking as number 50 in the world.",
+  },
+  {
+    year: 2023,
+    label:
+      "Decided to pursue my other passion in technology by enrolling in Software Engineering at DTU.",
+  },
+];
+
+// Helper: get percent position for year (horizontal) with 40px padding
+const minYear = 1999;
+const maxYear = 2025;
+const dotPadding = 40; // px
+function getDotPosition(year, containerWidth = 0) {
+  // If containerWidth is 0, fallback to percent only (for SSR)
+  const percent = (year - minYear) / (maxYear - minYear);
+  if (!containerWidth) return `calc(${percent * 100}% )`;
+  // Calculate px position with padding
+  return dotPadding + percent * (containerWidth - 2 * dotPadding);
+}
+
 export default function About() {
+  const [tooltip, setTooltip] = useState(null);
+  const [containerWidth, setContainerWidth] = useState(0);
+  const timelineRef = useRef();
+
+  useEffect(() => {
+    if (timelineRef.current) {
+      setContainerWidth(timelineRef.current.offsetWidth);
+    }
+    const handleResize = () => {
+      if (timelineRef.current) {
+        setContainerWidth(timelineRef.current.offsetWidth);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Carousel state
+  const [currentIdx, setCurrentIdx] = useState(Math.floor(allDots.length / 2));
+  const carouselRef = useRef();
+  const dragState = useRef({ dragging: false, startX: 0, lastX: 0 });
+
+  // Mouse drag handlers
+  useEffect(() => {
+    const handleMouseDown = (e) => {
+      dragState.current.dragging = true;
+      dragState.current.startX = e.clientX;
+      dragState.current.lastX = e.clientX;
+    };
+    const handleMouseMove = (e) => {
+      if (!dragState.current.dragging) return;
+      const dx = e.clientX - dragState.current.lastX;
+      dragState.current.lastX = e.clientX;
+      if (Math.abs(e.clientX - dragState.current.startX) > 40) {
+        if (dx < 0 && currentIdx < allDots.length - 1) {
+          setCurrentIdx((idx) => Math.min(idx + 1, allDots.length - 1));
+          dragState.current.startX = e.clientX;
+        } else if (dx > 0 && currentIdx > 0) {
+          setCurrentIdx((idx) => Math.max(idx - 1, 0));
+          dragState.current.startX = e.clientX;
+        }
+      }
+    };
+    const handleMouseUp = () => {
+      dragState.current.dragging = false;
+    };
+    const node = carouselRef.current;
+    if (node) {
+      node.addEventListener("mousedown", handleMouseDown);
+      window.addEventListener("mousemove", handleMouseMove);
+      window.addEventListener("mouseup", handleMouseUp);
+    }
+    return () => {
+      if (node) node.removeEventListener("mousedown", handleMouseDown);
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseup", handleMouseUp);
+    };
+  }, [currentIdx]);
+
+  // Find timeline info for aktiv boks
+  const activeYear = allDots[currentIdx]?.year;
+  const activeTimeline = timeline.find((t) =>
+    // Find det timeline-interval hvor activeYear matcher
+    (() => {
+      const years = t.years.split(" to ");
+      const start = parseInt(years[0]);
+      const end =
+        years[1] === "Today" ? new Date().getFullYear() : parseInt(years[1]);
+      return activeYear >= start && activeYear <= end;
+    })()
+  );
+
   return (
     <section className="about-section" id="about">
       <h2 className="about-header">ABOUT</h2>
@@ -43,13 +191,14 @@ export default function About() {
       <div className="about-content">
         <div className="about-text">
           <p>
-            I'm a curious and driven software engineer with a strong interest in
+            I'm a curious and driven Software Engineer with a strong interest in
             both technology and people. I enjoy working on projects where I can
-            combine technical precision with creative thinking, and I thrive in
-            collaborative environments where I can learn from others. My toolkit
-            includes [mention some tech stack, e.g. React, Node.js, Firebase],
-            and I'm especially interested in building software that improves
-            everyday life. Let's build something great together.
+            combine technical precision with creative and logical thinking, and
+            I thrive in collaborative environments where we can make eachother
+            even better. Complex problems excites me, but I always try to find
+            simple, elegang and effective solutions. One of my main goals is
+            building software where I can directly impact and improve people's
+            life
           </p>
         </div>
 
@@ -68,33 +217,71 @@ export default function About() {
         </div>
       </div>
 
-      <div className="timeline-grid">
-        {timeline.map((item, index) => (
-          <div key={index} className="flip-card">
-            <div className="flip-card-inner">
-              <div className="flip-card-front">
-                <div className="card-years">
-                  <div className="first-year">
-                    {item.years.split(" to ")[0]}
-                  </div>
-                  <div className="to">to</div>
-                  <div className="second-year">
-                    {item.years.split(" to ")[1]}
-                  </div>
-                </div>
-                <div className="card-title">{item.title}</div>
+      {/* Carousel Timeline */}
+      <div className="carousel-container" ref={carouselRef}>
+        <div className="carousel-track">
+          {allDots.map((item, idx) => {
+            const offset = idx - currentIdx;
+            if (Math.abs(offset) > 3) return null;
+            let className = "carousel-card";
+            let scale = 0.75;
+            let spacing = 220;
+            if (offset === 0) {
+              className += " focused";
+              scale = 1.15;
+              spacing = 240;
+            } else if (Math.abs(offset) === 1) {
+              className += " near";
+              scale = 1.02;
+              spacing = 250;
+            } else if (Math.abs(offset) === 2) {
+              className += " mid";
+              scale = 0.9;
+              spacing = 235;
+            } else {
+              className += " side";
+              scale = 0.75;
+              spacing = 220;
+            }
+            return (
+              <div
+                key={idx}
+                className={className}
+                style={{
+                  left: "50%",
+                  transform: `
+                    translateX(calc(-50% + ${offset * spacing}px))
+                    scale(${scale})
+                  `,
+                  zIndex:
+                    offset === 0
+                      ? 4
+                      : Math.abs(offset) === 1
+                      ? 3
+                      : Math.abs(offset) === 2
+                      ? 2
+                      : 1,
+                  opacity: 1,
+                  position: "absolute",
+                  top: "50%",
+                  transformOrigin: "center center",
+                  translate: "0 -50%",
+                }}
+              >
+                <div className="carousel-years">{item.year}</div>
+                <div className="carousel-description">{item.label}</div>
               </div>
-
-              <div className="flip-card-back">
-                <div className="card-back-content">
-                  <strong>{item.title}</strong>
-                  <p>{item.description}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
+            );
+          })}
+        </div>
       </div>
+
+      {activeTimeline && (
+        <div className="carousel-active-info">
+          <div className="carousel-active-period">{activeTimeline.years}</div>
+          <div className="carousel-active-title">{activeTimeline.title}</div>
+        </div>
+      )}
     </section>
   );
 }
