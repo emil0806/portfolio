@@ -37,65 +37,96 @@ const timeline = [
 
 // Alle prikker med årstal og tekst
 const allDots = [
-  { year: 1999, label: "Born on 8th of June 1999 near Copenhagen" },
-  { year: 2001, label: "Moved to the south of Jylland" },
+  {
+    year: 1999,
+    label: "Born on 8th of June 1999 near Copenhagen",
+    period: "Early Years",
+  },
+  { year: 2001, label: "Moved to the south of Jylland", period: "Early Years" },
   {
     year: 2004,
     label: "Began playning badminton, and developed a passion for sport",
+    period: "Early Years",
   },
-  { year: 2005, label: "Started in Elementary School" },
+  {
+    year: 2005,
+    label: "Started in Elementary School",
+    period: "Elementary School",
+  },
   {
     year: 2012,
     label:
       "By the time I finished 7th grade I had passed the first year of Mathematics on Gymnasium level.",
+    period: "Elementary School",
   },
-  { year: 2014, label: "Won the National Youth Championship in Badminton" },
-  { year: 2015, label: "Went to Ikast-Idrætsefterskole" },
+  {
+    year: 2014,
+    label: "Won the National Youth Championship in Badminton",
+    period: "Elementary School",
+  },
+  {
+    year: 2015,
+    label: "Went to Ikast-Idrætsefterskole",
+    period: "College & Gymnasium",
+  },
   {
     year: 2016,
     label:
       "Attended Sports College in Ikast to combine academics and competive sports.",
+    period: "College & Gymnasium",
   },
   {
     year: 2019,
     label:
       "Graduated Gymnasium after having spent three years balancing academics while playing badminton at some of the highest level in Denmark.",
+    period: "College & Gymnasium",
   },
   {
     year: 2019,
     label:
       "Started my carrer as a professional athlete focusing completely on badminton.",
+    period: "Professional Athlete",
   },
   {
     year: 2020,
     label:
       "Played in both the Danish Badminton League and the Bundesliga in Germany.",
+    period: "Professional Athlete",
   },
   {
     year: 2021,
     label:
       "Travelled around Europe to play in international tournaments, and won multiple titles.",
+    period: "Professional Athlete",
   },
   {
     year: 2021,
     label:
       "Played in some of the biggest tournaments in the world like All England and Denmark Open.",
+    period: "Professional Athlete",
   },
-  { year: 2022, label: "Started my passion for technology as a hobby." },
+  {
+    year: 2022,
+    label: "Started my passion for technology as a hobby.",
+    period: "Professional Athlete",
+  },
   {
     year: 2022,
     label:
       "Part of founding af family businnes that in under two years grew to a yearly revenue over a million.",
+    period: "DTU & Company Owner",
   },
   {
     year: 2023,
     label:
       "Ended my career due to a hip injury with a carrere high ranking as number 50 in the world.",
+    period: "Professional Athlete",
   },
   {
     year: 2023,
     label:
       "Decided to pursue my other passion in technology by enrolling in Software Engineering at DTU.",
+    period: "DTU & Company Owner",
   },
 ];
 
@@ -270,6 +301,7 @@ export default function About() {
               >
                 <div className="carousel-years">{item.year}</div>
                 <div className="carousel-description">{item.label}</div>
+                <div className="carousel-period-label">{item.period}</div>
               </div>
             );
           })}
