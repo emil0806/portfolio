@@ -130,42 +130,11 @@ const allDots = [
   },
 ];
 
-// Helper: get percent position for year (horizontal) with 40px padding
-const minYear = 1999;
-const maxYear = 2025;
-const dotPadding = 40; // px
-function getDotPosition(year, containerWidth = 0) {
-  // If containerWidth is 0, fallback to percent only (for SSR)
-  const percent = (year - minYear) / (maxYear - minYear);
-  if (!containerWidth) return `calc(${percent * 100}% )`;
-  // Calculate px position with padding
-  return dotPadding + percent * (containerWidth - 2 * dotPadding);
-}
-
 export default function About() {
-  const [tooltip, setTooltip] = useState(null);
-  const [containerWidth, setContainerWidth] = useState(0);
-  const timelineRef = useRef();
-
-  useEffect(() => {
-    if (timelineRef.current) {
-      setContainerWidth(timelineRef.current.offsetWidth);
-    }
-    const handleResize = () => {
-      if (timelineRef.current) {
-        setContainerWidth(timelineRef.current.offsetWidth);
-      }
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  // Carousel state
   const [currentIdx, setCurrentIdx] = useState(Math.floor(allDots.length / 2));
   const carouselRef = useRef();
   const dragState = useRef({ dragging: false, startX: 0, lastX: 0 });
 
-  // Mouse drag handlers
   useEffect(() => {
     const handleMouseDown = (e) => {
       dragState.current.dragging = true;

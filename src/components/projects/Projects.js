@@ -1,16 +1,13 @@
 import React, { useState } from "react";
 import "./Projects.css";
-import placeholder from "../../assets/placeholder.mp4";
 import {
   SiReact,
   SiJavascript,
-  SiOpenjdk,
   SiMysql,
   SiHtml5,
   SiCss3,
   SiPython,
   SiNodedotjs,
-  SiCplusplus,
   SiC,
   SiKotlin,
   SiGit,
@@ -19,8 +16,6 @@ import {
   SiOpencv,
   SiFirebase,
 } from "react-icons/si";
-
-import { FaOpencv } from "react-icons/fa";
 
 const techIcons = {
   Python: <SiPython title="Python" />,
@@ -36,6 +31,7 @@ const techIcons = {
   JavaScript: <SiJavascript title="JavaScript" />,
   Firebase: <SiFirebase title="Firebase" />,
   NodeJS: <SiNodedotjs title="Node.js" />,
+  Git: <SiGit title="Git" />,
 };
 
 const allProjects = [
