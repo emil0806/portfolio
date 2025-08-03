@@ -45,6 +45,9 @@ const allProjects = [
     tech: ["Python", "OpenCV"],
     description:
       "Build an autonomous robot that navigates a defined area, detects balls using image recognition and collects them using socket-based control. My core responsibilities were as project leader and in implementing both the OpenCV image recognition as well as the Python program and pathfinding algorithm that where used for controlling the robot.",
+    video:
+      "https://player.cloudinary.com/embed/?cloud_name=dlvub6ilt&public_id=1_12_cbvddk&profile=cld-looping",
+    aspectRatio: "16 / 9",
   },
   {
     title: "Light Measuring Device",
@@ -59,6 +62,9 @@ const allProjects = [
     tech: ["CSS", "Shopify"],
     description:
       "I designed and developed a fully functional e-commerce shop using Shopify, including different integrations such as payment, accounting and shipping. The shop is optimized for both desktop and mobile devices, and were customized from ordinary templates.",
+    video:
+      "https://player.cloudinary.com/embed/?cloud_name=dlvub6ilt&public_id=butik_zphouf&profile=cld-looping",
+    aspectRatio: "16 / 9",
   },
   {
     title: "Portfolio Website",
@@ -72,7 +78,9 @@ const allProjects = [
     type: "School",
     tech: ["React", "CSS", "NodeJS", "Database"],
     description:
-      "With my team we designed and developed a betting website, where users can place bets on small games like rock-paper-scissors. The website is built with React for the frontend and Node.js for the backend, with a database to store user data and bets.",
+      "With my team we designed and developed a betting website, where users can place bets on small games like rock-paper-scissors while talking to eachother through a webcam connection. The website is built with React for the frontend and Node.js for the backend, with a database to store user data and bets.",
+    video:
+      "https://player.cloudinary.com/embed/?cloud_name=dlvub6ilt&public_id=betisland_cshrrl&profile=cld-looping",
   },
   {
     title: "Website for Sport club",
@@ -87,6 +95,9 @@ const allProjects = [
     tech: ["Kotlin", "Firebase"],
     description:
       "With my team we developed a food app that allows users to upload recipes and scroll through other peoples recipes. The app is built with Kotlin for Android, and follow moderns trends like TikTok and Instragram but focuses solely on food and recipes, while including features such as user authentication and image upload.",
+    video:
+      "https://player.cloudinary.com/embed/?cloud_name=dlvub6ilt&public_id=chef_yp1d0v&profile=cld-looping",
+    aspectRatio: "9 / 16",
   },
   {
     title: "Yukon Solitaire",
@@ -140,10 +151,21 @@ export default function Projects() {
                 </div>
               </div>
               <div className="project-card-back">
-                <video width="100%" controls autoPlay loop playsInline>
-                  <source src={placeholder} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                <iframe
+                  width="100%"
+                  height="auto"
+                  maxHeight="300px"
+                  src={project.video}
+                  title={project.title}
+                  frameBorder="0"
+                  allow="autoplay; fullscreen"
+                  allowFullScreen
+                  style={{
+                    background: "#fff",
+                    display: "block",
+                    aspectRatio: project.aspectRatio || "640 / 360",
+                  }}
+                />
               </div>
             </div>
           </div>
