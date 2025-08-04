@@ -205,7 +205,7 @@ export default function Projects() {
                     allow="autoplay; fullscreen"
                     allowFullScreen
                     style={{
-                      background: "#fff",
+                      background: "#1e1e1e",
                       display: "block",
                       aspectRatio: project.aspectRatio || "640 / 360",
                     }}
