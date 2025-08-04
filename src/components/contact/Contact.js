@@ -51,11 +51,59 @@ export default function Contact() {
       <div className="contact-content">
         <img src={profileImage} alt="Profile" className="contact-image" />
 
-        <h3 className="contact-name">Emil Leonhard Lauritzen</h3>
-        <p className="contact-email">
-          <em>emilleonhardlauritzen@gmail.com</em>
-        </p>
-        <p className="contact-phone">+45 42 19 03 76</p>
+        <SyntaxHighlighter
+          language="jsx"
+          style={vscDarkPlus}
+          customStyle={{
+            textAlign: "center",
+            width: "100%",
+          }}
+        >
+          {`const name = "Emil Leonhard Lauritzen";`}
+        </SyntaxHighlighter>
+        <div
+          style={{
+            fontFamily:
+              "Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace",
+            backgroundColor: "#1e1e1e",
+            color: "#d4d4d4",
+            padding: "10px 15px",
+            textAlign: "center",
+            marginBottom: "10px",
+            fontSize: "1.4rem",
+          }}
+        >
+          <span style={{ color: "var(--keyword-color)" }}>const </span>
+          <span style={{ color: "var(--variable-color)" }}>mail</span> ={" "}
+          <a
+            href="mailto:emilleonhardlauritzen@gmail.com"
+            className="contact-link"
+          >
+            "emilleonhardlauritzen@gmail.com"
+          </a>
+          ;
+        </div>
+
+        <div
+          style={{
+            fontFamily:
+              "Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace",
+            backgroundColor: "#1e1e1e",
+            color: "#d4d4d4",
+            borderRadius: "8px",
+            textAlign: "center",
+            marginBottom: "10px",
+            fontSize: "1.4rem",
+            padding: "10px 15px",
+          }}
+        >
+          <span style={{ color: "var(--keyword-color)" }}>const </span>
+          <span style={{ color: "var(--variable-color)" }}>phone</span> ={" "}
+          <a href="tel:+4542190376" className="contact-link">
+            "+45 42 19 03 76"
+          </a>
+          ;
+        </div>
 
         <div className="contact-icons">
           <a
@@ -74,13 +122,28 @@ export default function Contact() {
           </a>
         </div>
 
-        <p className="contact-footer">
-          <em>
-            I'm always interested to hear about future opportunities.
-            <br /> <br />
-            Let’s get in touch.
-          </em>
-        </p>
+        <div className="contact-footer">
+          <SyntaxHighlighter
+            language="jsx"
+            style={vscDarkPlus}
+            customStyle={{
+              textAlign: "center",
+              width: "100%",
+            }}
+          >
+            {`/* I'm always interested to hear about future opportunities. */`}
+          </SyntaxHighlighter>
+          <SyntaxHighlighter
+            language="jsx"
+            style={vscDarkPlus}
+            customStyle={{
+              textAlign: "center",
+              width: "100%",
+            }}
+          >
+            {`/* Let's get in touch */`}
+          </SyntaxHighlighter>
+        </div>
       </div>
     </section>
   );

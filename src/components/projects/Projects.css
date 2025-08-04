@@ -42,19 +42,21 @@
   border: none;
   font-size: 1.2rem;
   font-weight: 400;
-  font-family: 'Inria Serif', serif;
   cursor: pointer;
   text-decoration: underline;
   text-underline-offset: 6px;
   padding: 4px 8px;
+  color: var(--variable-color);
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 }
 
 .filter-btn:hover {
-  font-style: italic;
+  color: var(--keyword-color);
 }
 
 .filter-btn.active {
   font-weight: bold;
+  color: var(--type-color)
 }
 
 .projects-grid {

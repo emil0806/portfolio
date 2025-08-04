@@ -139,7 +139,7 @@ const allDots = [
   },
   {
     year: 2022,
-    label: `Part of founding a 
+    label: `Co-founder of a 
       family businnes that in under 
       two years grew to a yearly 
       revenue over a million.`,
@@ -172,16 +172,25 @@ export default function About() {
   const [typedText, setTypedText] = useState("");
   const aboutHeader = `const sectionHeader = "ABOUT ME";`;
 
-  const aboutText = `I'm a curious and driven Software Engineer with a 
-  strong interest in both technology and people.
-  I enjoy working on projects where I can combine technical precision
-  with creative and logical thinking.
-  I thrive in collaborative environments 
-  where we can make each other even better.
-  Complex problems excite me, 
-  but I always try to find simple, elegant and effective solutions.
-  One of my main goals is building software, 
-  where I can directly impact and improve people's lives.`;
+  const aboutText = `const aboutMe = {
+  me: \`I'm a curious and driven software engineer
+  with a strong interest in both technology and people.\`,
+
+  motivation: \`I love building things that have a real impact
+  and make people's lives easier or more enjoyable.\`,
+
+  mindset: \`I enjoy solving complex problems
+  with simple, elegant, and effective solutions.\`,
+
+  collaboration: \`I thrive in teams where we support
+  and challenge each other to grow.\`,
+
+  creativity: \`I like combining technical precision
+  with creative and logical thinking.\`,
+
+  ambition: \`I’m always looking to improve my skills
+  and contribute to meaningful projects.\`,
+};`;
 
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -393,13 +402,26 @@ export default function About() {
           })}
         </div>
       </div>
-
-      {activeTimeline && (
-        <div className="carousel-active-info">
-          <div className="carousel-active-period">{activeTimeline.years}</div>
-          <div className="carousel-active-title">{activeTimeline.title}</div>
-        </div>
-      )}
+      <div className="timeline-info">
+        {activeTimeline && (
+          <SyntaxHighlighter
+            language="jsx"
+            style={vscDarkPlus}
+            customStyle={{
+              padding: "15px",
+              borderRadius: "10px",
+              fontSize: "1rem",
+              marginTop: "30px",
+              maxWidth: "600px",
+              marginLeft: "auto",
+              marginRight: "auto",
+              textAlign: "left",
+            }}
+          >
+            {`/* Period: ${activeTimeline.years} */\n/* Title: ${activeTimeline.title} */`}
+          </SyntaxHighlighter>
+        )}
+      </div>
     </section>
   );
 }

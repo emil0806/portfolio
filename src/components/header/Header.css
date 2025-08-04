@@ -42,6 +42,8 @@
 
 .social-icons a:hover {
   color: var(--keyword-color);
+  transform: scale(1.1);
+  cursor: pointer;
 }
 
 .nav-menu a.active {

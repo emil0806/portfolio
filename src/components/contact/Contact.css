@@ -50,22 +50,13 @@
   margin-bottom: 10px;
 }
 
-.contact-name {
-  font-size: 2rem;
-  font-weight: 600;
-  margin-bottom: 6px;
-  margin-top: 10px;
-}
-
-.contact-email,
-.contact-phone {
+#contact > div.contact-content > pre > code > span {
   font-size: 1.4rem;
-  margin: 6px 0;
+  margin: 0px !important;
 }
 
-.contact-email:hover, .contact-phone:hover {
-  text-decoration: underline;
-  cursor: pointer;
+#contact > div.contact-content > pre {
+  margin: 0px !important;
 }
 
 .contact-icons {
@@ -76,16 +67,36 @@
 
 .contact-icon {
   font-size: 50px;
-  color: black;
+  color: var(--variable-color);
   transition: transform 0.2s ease;
 }
 
 .contact-icon:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
+  color: var(--keyword-color);
 }
 
 .contact-footer {
   font-size: 1.2rem;
   margin-top: 20px;
   color: #333;
+}
+
+#contact > div.contact-content > div.contact-footer > pre > code > span {
+  font-size: 1.2rem;
+}
+
+#contact > div.contact-content > div.contact-footer > pre {
+  margin: 0px !important;
+}
+
+.contact-link {
+  color: var(--string-color);
+  text-decoration: none;
+  transition: text-decoration 0.2s;
+}
+
+.contact-link:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--string-color);
 }
