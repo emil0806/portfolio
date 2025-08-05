@@ -37,7 +37,7 @@
 .resume-box {
   width: 80%;
   max-width: 600px;
-  height: 846px;
+  height: 775px;
   margin: 0 auto;
   background-color: #1e1e1e;
   overflow: hidden;
@@ -46,9 +46,17 @@
 .resume-download {
   display: inline-block;
   margin-top: 20px;
-  text-decoration: underline;
-  font-size: 1rem;
+  text-decoration: none;
+  font-size: 1.2rem;
   font-weight: 500;
-  color: black;
+  color: var(--comment-color);
   cursor: pointer;
+  white-space: 'pre';
+  vertical-align: middle;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 2px;
+}
+
+.resume-download:hover {
+  text-decoration: underline;
 }

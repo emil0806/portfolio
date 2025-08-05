@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import placeholderCV from "../../assets/placeholder.pdf";
+import resume from "../../assets/resume.pdf";
 import "./Resume.css";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
@@ -49,7 +49,7 @@ export default function Resume() {
 
       <div className="resume-box">
         <embed
-          src={placeholderCV + "#toolbar=0&navpanes=0"}
+          src={resume + "#toolbar=0&navpanes=0"}
           type="application/pdf"
           width="100%"
           height="100%"
@@ -58,10 +58,10 @@ export default function Resume() {
 
       <a
         className="resume-download"
-        href={placeholderCV}
+        href={resume}
         download="Emil_Leonhard_Lauritzen_CV.pdf"
       >
-        DOWNLOAD CV
+        /* DOWNLOAD CV */
       </a>
     </section>
   );
