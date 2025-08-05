@@ -63,25 +63,18 @@ export default function Header() {
       </div>
       <div className="social-icons">
         <a
-          href="https://github.com/dit-brugernavn"
+          href="https://github.com/emil0806"
           target="_blank"
           rel="noopener noreferrer"
         >
           <FaGithub />
         </a>
         <a
-          href="https://linkedin.com/in/dit-brugernavn"
+          href="https://linkedin.com/in/emil-leonhard-lauritzen"
           target="_blank"
           rel="noopener noreferrer"
         >
           <FaLinkedin />
-        </a>
-        <a
-          href="https://instagram.com/dit-brugernavn"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <FaInstagram />
         </a>
       </div>
     </header>

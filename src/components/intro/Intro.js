@@ -151,7 +151,6 @@ export default function Intro() {
           {visibleH1 && (
             <h1
               style={{
-                color: "#000",
                 fontSize: "3rem",
                 textAlign: "center",
               }}
@@ -162,7 +161,6 @@ export default function Intro() {
           {visibleH2 && (
             <h2
               style={{
-                color: "#000",
                 fontSize: "2rem",
                 textAlign: "center",
               }}
@@ -173,7 +171,6 @@ export default function Intro() {
           {visibleP && (
             <p
               style={{
-                color: "#000",
                 fontSize: "1.2rem",
                 textAlign: "center",
               }}

@@ -85,7 +85,7 @@ const allProjects = [
   {
     title: "Website for Sport club",
     type: "Work",
-    tech: ["Wordpress", "CSS"],
+    tech: ["Wordpress", "JavaScript", "CSS"],
     description:
       "I was hired by a local sport club to design and develop their new website using Wordpress, as well as integrating it with a booking system. The website includes features such as calendar management, member registration, and club information.",
   },

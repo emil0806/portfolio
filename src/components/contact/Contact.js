@@ -107,14 +107,14 @@ export default function Contact() {
 
         <div className="contact-icons">
           <a
-            href="https://github.com/YOUR_GITHUB"
+            href="https://github.com/emil0806"
             target="_blank"
             rel="noopener noreferrer"
           >
             <FaGithub className="contact-icon" />
           </a>
           <a
-            href="https://www.linkedin.com/in/YOUR_LINKEDIN"
+            href="https://www.linkedin.com/in/emil-leonhard-lauritzen/"
             target="_blank"
             rel="noopener noreferrer"
           >
