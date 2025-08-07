@@ -134,50 +134,37 @@ export default function Intro() {
       <div className="editor-container">
         {/* Venstre side */}
         <div className="output-box">
-          {showImage && (
-            <img
-              src={profileImage}
-              alt="Me"
-              style={{
-                width: "150px",
-                height: "150px",
-                borderRadius: "50%",
-                objectFit: "cover",
-                display: "block",
-                margin: "20px auto 0",
-              }}
-            />
-          )}
-          {visibleH1 && (
-            <h1
-              style={{
-                fontSize: "3rem",
-                textAlign: "center",
-              }}
-            >
-              Hi, I am Emil
-            </h1>
-          )}
-          {visibleH2 && (
-            <h2
-              style={{
-                fontSize: "2rem",
-                textAlign: "center",
-              }}
-            >
-              I am a <span className="highlight">software engineer</span>
-            </h2>
-          )}
-          {visibleP && (
-            <p
-              style={{
-                fontSize: "1.2rem",
-                textAlign: "center",
-              }}
-            >
-              I strive to build effective solutions
-            </p>
-          )}
+          {showImage && <img src={profileImage} alt="Me" />}
+          <div className="output-text">
+            {visibleH1 && (
+              <h1
+                style={{
+                  textAlign: "center",
+                }}
+              >
+                Hi, I am Emil
+              </h1>
+            )}
+            {visibleH2 && (
+              <h2
+                style={{
+                  textAlign: "center",
+                }}
+              >
+                I am a <span className="highlight">software engineer</span>
+              </h2>
+            )}
+            {visibleP && (
+              <p
+                style={{
+                  textAlign: "center",
+                }}
+              >
+                I strive to build effective solutions
+              </p>
+            )}
+          </div>
+
           {showTechIcons && (
             <div
               className="tech-icons"
@@ -191,10 +178,8 @@ export default function Intro() {
             >
               {techList.map((tech, idx) => (
                 <div key={idx} style={{ textAlign: "center" }}>
-                  <div style={{ fontSize: "2rem" }}>{tech.icon}</div>
-                  <div style={{ fontSize: "0.8rem", color: "#94a3b8" }}>
-                    {tech.label}
-                  </div>
+                  <div className="tech-icon">{tech.icon}</div>
+                  <div className="tech-label">{tech.label}</div>
                 </div>
               ))}
             </div>

@@ -51,3 +51,112 @@
   border-bottom: 2px solid var(--type-color);
 }
 
+.nav-social-icons {
+  display: none;
+  margin-top: 1.5rem;
+  justify-content: center;
+  gap: 1.2rem;
+}
+
+.nav-social-icons a {
+  color: inherit;
+  font-size: 1.7rem;
+  transition: color 0.2s;
+}
+
+
+/* --- Mobilvenlig hamburger-menu og responsive styles --- */
+.mobile-left {
+  display: none;
+}
+
+.hamburger {
+  background: none;
+  border: none;
+  color: var(--variable-color);
+  font-size: 2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .header {
+    padding: 12px 16px;
+    grid-template-columns: auto 1fr auto;
+  }
+  .nav-menu a {
+    margin: 0 10px;
+    font-size: 1rem;
+  }
+  .nav-social-icons {
+    display: flex;
+    flex-direction: row;
+  }
+  .social-icons {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    grid-template-columns: auto 1fr auto;
+    padding: 10px 8px;
+  }
+  .mobile-left {
+    display: flex;
+    align-items: center;
+  }
+  .nav-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(30, 30, 30, 0.98);
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    z-index: 2000;
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+    padding-top: 80px;
+    pointer-events: none;
+  }
+  .nav-container.open {
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+  .nav-menu {
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    gap: 32px;
+  }
+  .nav-menu a {
+    font-size: 1.3rem;
+    margin: 0;
+    padding: 8px 0;
+  }
+  .social-icons {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    border-radius: 50px;
+    padding: 8px 16px;
+    z-index: 2100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    color: var(--variable-color);
+  }
+
+  .nav-social-icons {
+    color: var(--variable-color);
+
+  }
+  
+  .hamburger {
+    display: flex;
+    z-index: 2200;
+  }
+}
+

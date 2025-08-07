@@ -234,7 +234,7 @@ export default function Projects() {
           {"/* What project are you most proud of - and why? */"}
         </SyntaxHighlighter>
 
-        <div className="video-placeholder">
+        <div className="project-video-box">
           <video width="100%" controls loop playsInline>
             <source src={placeholder} type="video/mp4" />
             Your browser does not support the video tag.

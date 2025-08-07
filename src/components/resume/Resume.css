@@ -43,6 +43,11 @@
   overflow: hidden;
 }
 
+.resume-box embed {
+  width: 100%;
+  height: 100%;
+}
+
 .resume-download {
   display: inline-block;
   margin-top: 20px;
@@ -59,4 +64,38 @@
 
 .resume-download:hover {
   text-decoration: underline;
+}
+
+.resume-pdf { display: block; width: 100%; height: 100%; }
+.resume-img { display: none; max-width: 100%; height: auto; }
+
+@media (max-width: 600px) {
+  .resume-section {
+    padding: 10px 4px;
+  }
+
+  .resume-pdf { display: none; }
+  .resume-img { display: block; }
+  .resume-box { height: auto; } 
+
+  .resume-header {
+    min-height: 50px;
+    font-size: 1.1rem;
+    width: 100vw;
+  }
+
+  #resume > div.resume-header > div > code > span {
+    font-size: 1rem !important;
+  }
+
+  .resume-box {
+    width: 100vw;
+    max-width: 100vw;
+  }
+
+  .resume-download {
+    font-size: 1rem;
+    margin-top: 12px;
+    letter-spacing: 1px;
+  }
 }

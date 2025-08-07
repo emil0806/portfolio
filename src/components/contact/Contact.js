@@ -56,7 +56,6 @@ export default function Contact() {
           style={vscDarkPlus}
           customStyle={{
             textAlign: "center",
-            width: "100%",
           }}
         >
           {`const name = "Emil Leonhard Lauritzen";`}
@@ -67,10 +66,8 @@ export default function Contact() {
               "Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace",
             backgroundColor: "#1e1e1e",
             color: "#d4d4d4",
-            padding: "10px 15px",
             textAlign: "center",
             marginBottom: "10px",
-            fontSize: "1.4rem",
           }}
         >
           <span style={{ color: "var(--keyword-color)" }}>const </span>
@@ -93,8 +90,6 @@ export default function Contact() {
             borderRadius: "8px",
             textAlign: "center",
             marginBottom: "10px",
-            fontSize: "1.4rem",
-            padding: "10px 15px",
           }}
         >
           <span style={{ color: "var(--keyword-color)" }}>const </span>

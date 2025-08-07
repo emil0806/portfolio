@@ -100,3 +100,60 @@
   text-decoration: underline;
   text-decoration-color: var(--string-color);
 }
+
+@media (max-width: 600px) {
+  .contact-section {
+    padding: 20px 4px 40px 4px;
+    width: 100vw;
+  }
+
+  .contact-header {
+    padding-left: 10px;
+    min-height: 50px;
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    width: 100vw;
+
+  }
+
+  #contact > div.contact-header > div > code > span {
+    font-size: 1rem !important;
+  }
+
+  .contact-image {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 8px;
+  }
+
+  #contact > div.contact-content > pre > code > span {
+    font-size: 0.8rem;
+  }
+
+  #contact > div.contact-content > div {
+    font-size: 0.8rem;
+  }
+
+  .contact-icons {
+    gap: 16px;
+    margin: 14px 0;
+  }
+
+  .contact-icon {
+    font-size: 32px;
+  }
+
+  .contact-footer {
+    font-size: 1rem;
+    margin-top: 12px;
+    width: 100vw;
+  }
+
+  #contact > div.contact-content > div.contact-footer > pre {
+    padding: 0px !important;
+  }
+
+  #contact > div.contact-content > div.contact-footer > pre > code > span {
+    font-size: 0.6rem;
+  }
+}

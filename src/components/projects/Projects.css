@@ -215,3 +215,101 @@
 #projects > div.project-video-section > div:nth-child(1) > code > span > span {
   font-size: 1rem;
 }
+
+@media (max-width: 600px) {
+  .projects-section {
+    padding: 0px 8px 0px 8px;
+  }
+
+  .projects-header {
+    min-height: 50px;
+    font-size: 1rem;
+    width: 100vw;
+  }
+
+  #projects > div.projects-header > div > code > span {
+    font-size: 1rem !important;
+  }
+
+  .filter-bar {
+    gap: 10px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+    width: 100vw;
+  }
+
+  .filter-btn {
+    font-size: 0.8rem;
+    padding: 2px 4px;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 18px;
+    width: 100vw;
+  }
+
+  .project-card {
+    height: 300px;
+    min-width: 0;
+  }
+
+  .project-card-inner {
+    min-width: 0;
+  }
+
+  .project-card-front,
+  .project-card-back {
+    font-size: 0.85rem;
+    padding: 0px;
+  }
+
+  .project-card-front h3 {
+    font-size: 1rem;
+  }
+
+  .project-card-front em {
+    font-size: 0.8rem;
+  }
+
+  .project-description {
+    font-size: 0.6rem;
+    padding: 0 4px;
+  }
+
+  .project-tech-icons {
+    font-size: 1.2rem;
+    gap: 6px;
+    margin: 6px 0;
+  }
+
+  .project-card-back {
+    font-size: 0.8rem;
+    padding: 10px;
+  }
+
+  .projects-video-box {
+    font-size: 0.6rem;
+  }
+
+  #projects > div.project-video-section > div:nth-child(1) > code > span > span {
+    font-size: 0.6rem;
+  }
+
+  .project-video-box {
+    width: 100vw;
+    height: 180px;
+    font-size: 0.95rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1e1e1e;
+  }
+
+  .project-video-box video {
+    height: 100%;
+    width: 80%;
+  }
+
+}

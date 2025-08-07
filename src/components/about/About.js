@@ -380,7 +380,6 @@ export default function About() {
                   customStyle={{
                     padding: "15px",
                     borderRadius: "10px",
-                    fontSize: "0.95rem",
                     width: "260px",
                     height: "300px",
                     textAlign: "start",
@@ -410,7 +409,6 @@ export default function About() {
             customStyle={{
               padding: "15px",
               borderRadius: "10px",
-              fontSize: "1rem",
               marginTop: "30px",
               maxWidth: "600px",
               marginLeft: "auto",

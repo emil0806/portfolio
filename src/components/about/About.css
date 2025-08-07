@@ -230,3 +230,116 @@
   margin: 0px !important;
   padding: 0px !important;
 }
+
+@media (max-width: 600px) {
+  .about-section {
+    padding: 30px 0px;
+  }
+
+  .about-header {
+    padding-left: 10px;
+    min-height: 50px;
+    font-size: 1rem;
+  }
+
+  .about-header-typing {
+    font-size: 1rem;
+  }
+
+  #about > div.about-header > div > code > span {
+    font-size: 1rem !important;
+  }
+
+  .about-content {
+    flex-direction: column;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-bottom: 20px;
+  }
+
+  .about-text {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+
+  #about > div.about-content > div.about-text > div > code > span {
+    font-size: 0.58rem;
+  }
+
+  .about-video {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .about-video h3 {
+    font-size: 0.95rem;
+  }
+
+  #about > div.about-content > div.about-video > div:nth-child(1) > code > span > span {
+    font-size: 0.6rem;
+  }
+
+  .video-box {
+    max-width: 100vw;
+    height: 180px;
+    font-size: 0.95rem;
+  }
+
+  .video-box video {
+    height: 100%;
+    width: 80%;
+  }
+
+  .carousel-container {
+    height: 280px;
+    min-height: 180px;
+    max-width: 100vw;
+  }
+
+  .carousel-card {
+    width: 140px;
+    min-width: 140px;
+    height: 140px;
+    font-size: 0.6em;
+    padding: 0 4px;
+  }
+
+  .carousel-years {
+    font-size: 0.8em;
+  }
+
+  .carousel-description {
+    font-size: 0.6em;
+    padding: 0 2px;
+  }
+
+  .carousel-active-info {
+    font-size: 0.95em;
+  }
+
+  .carousel-active-period {
+    font-size: 1.1em;
+  }
+
+  .carousel-active-title {
+    font-size: 1em;
+  }
+
+  #about > div.carousel-container > div > div > pre > code > span {
+    font-size: 0.7rem;
+  }
+
+  .timeline-info {
+    font-size: 0.95em;
+    padding: 0 4px;
+  }
+
+  #about > div.timeline-info > pre > code > span {
+    font-size: 0.95rem;
+  }
+
+}

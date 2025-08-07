@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import resume from "../../assets/resume.pdf";
+import resumeImg from "../../assets/resume.png";
 import "./Resume.css";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
@@ -49,10 +50,15 @@ export default function Resume() {
 
       <div className="resume-box">
         <embed
+          className="resume-pdf"
           src={resume + "#toolbar=0&navpanes=0"}
           type="application/pdf"
-          width="100%"
-          height="100%"
+        />
+        <img
+          className="resume-img"
+          src={resumeImg}
+          alt="CV forhåndsvisning"
+          loading="lazy"
         />
       </div>
 

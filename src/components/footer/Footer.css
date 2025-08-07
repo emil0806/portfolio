@@ -13,3 +13,10 @@
     color: #6b7280;
     gap: 20px;
 }
+
+@media screen and (max-width: 600px) {
+    .footer-content {
+        font-size: 0.6rem;
+    }
+    
+}
