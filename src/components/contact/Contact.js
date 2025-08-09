@@ -35,13 +35,10 @@ export default function Contact() {
           wrapLines
           lineNumberStyle={{ color: "#6d6d6d" }}
           PreTag="div"
-          className="contact-header-typing"
           ref={codeRef}
           customStyle={{
-            padding: "20px",
             borderRadius: "10px",
             margin: "0",
-            width: "100%",
           }}
         >
           {typedText}

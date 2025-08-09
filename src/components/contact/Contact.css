@@ -103,17 +103,16 @@
 
 @media (max-width: 600px) {
   .contact-section {
-    padding: 20px 4px 40px 4px;
+    padding: 20px 0px 40px 0px;
     width: 100vw;
   }
 
   .contact-header {
-    padding-left: 10px;
+    padding-left: 0px;
     min-height: 50px;
     font-size: 1.1rem;
     margin-bottom: 20px;
     width: 100vw;
-
   }
 
   #contact > div.contact-header > div > code > span {

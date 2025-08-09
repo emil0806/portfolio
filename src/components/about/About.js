@@ -197,6 +197,16 @@ export default function About() {
     threshold: 0.2,
   });
 
+  // Detect mobile viewport
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 600px)");
+    const handler = () => setIsMobile(mq.matches);
+    handler();
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
   useEffect(() => {
     if (inView && typedText.length < aboutHeader.length) {
       const timeout = setTimeout(() => {
@@ -332,23 +342,25 @@ export default function About() {
             let className = "carousel-card";
             let scale = 0.75;
             let spacing = 220;
+
             if (offset === 0) {
               className += " focused";
-              scale = 1.15;
-              spacing = 240;
+              scale = isMobile ? 1.05 : 1.15;
+              spacing = isMobile ? 140 : 240; // tighter on mobile
             } else if (Math.abs(offset) === 1) {
               className += " near";
-              scale = 1.02;
-              spacing = 250;
+              scale = isMobile ? 0.98 : 1.02;
+              spacing = isMobile ? 145 : 250; // tighter on mobile
             } else if (Math.abs(offset) === 2) {
               className += " mid";
-              scale = 0.9;
-              spacing = 235;
+              scale = isMobile ? 0.88 : 0.9;
+              spacing = isMobile ? 130 : 235; // tighter on mobile
             } else {
               className += " side";
-              scale = 0.75;
-              spacing = 220;
+              scale = isMobile ? 0.78 : 0.75;
+              spacing = isMobile ? 120 : 220; // tighter on mobile
             }
+
             return (
               <div
                 key={idx}
@@ -380,9 +392,9 @@ export default function About() {
                   customStyle={{
                     padding: "15px",
                     borderRadius: "10px",
-                    width: "260px",
-                    height: "300px",
-                    textAlign: "start",
+                    width: isMobile ? "100%" : "260px",
+                    height: isMobile ? "100%" : "300px",
+                    textAlign: isMobile ? "center" : "start",
                     display: "flex",
                     alignItems: "center",
                     whiteSpace: "pre-wrap",

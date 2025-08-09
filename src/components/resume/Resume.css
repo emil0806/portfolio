@@ -84,6 +84,10 @@
     width: 100vw;
   }
 
+  .resume-header-typing {
+    width: 100vw;
+  }
+
   #resume > div.resume-header > div > code > span {
     font-size: 1rem !important;
   }

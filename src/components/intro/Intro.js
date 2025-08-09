@@ -196,6 +196,10 @@ export default function Intro() {
             lineNumberStyle={{ color: "#6d6d6d" }}
             PreTag="div"
             ref={codeRef}
+            customStyle={{
+              maxWidth: "100%",
+              overflowX: "auto",
+            }}
           >
             {typedCode}
           </SyntaxHighlighter>

@@ -41,7 +41,6 @@ export default function Resume() {
             padding: "20px",
             borderRadius: "10px",
             margin: "0",
-            width: "100%",
           }}
         >
           {typedText}

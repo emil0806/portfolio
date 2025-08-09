@@ -145,13 +145,11 @@ export default function Projects() {
           wrapLines
           lineNumberStyle={{ color: "#6d6d6d" }}
           PreTag="div"
-          className="project-header-typing"
           ref={codeRef}
           customStyle={{
             padding: "20px",
             borderRadius: "10px",
             margin: "0",
-            width: "100%",
           }}
         >
           {typedText}
