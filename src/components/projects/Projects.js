@@ -136,6 +136,9 @@ export default function Projects() {
       ? allProjects
       : allProjects.filter((proj) => proj.type === filter);
 
+  // Simple video availability check for the bottom interview video
+  const [hasVideo, setHasVideo] = useState(false);
+
   return (
     <section className="projects-section" id="projects">
       <div className="projects-header" ref={ref}>
@@ -233,10 +236,28 @@ export default function Projects() {
         </SyntaxHighlighter>
 
         <div className="project-video-box">
-          <video width="100%" controls loop playsInline>
-            <source src={placeholder} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+          {hasVideo ? (
+            <video
+              width="100%"
+              controls
+              loop
+              playsInline
+              onError={() => setHasVideo(false)}
+            >
+              <source src={placeholder} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          ) : (
+            <div
+              style={{
+                width: "100%",
+                padding: "20px",
+                textAlign: "center",
+              }}
+            >
+              Interview is coming...
+            </div>
+          )}
         </div>
       </div>
     </section>

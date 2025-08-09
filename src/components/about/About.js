@@ -207,6 +207,9 @@ export default function About() {
     return () => mq.removeEventListener("change", handler);
   }, []);
 
+  // Video availability
+  const [hasVideo, setHasVideo] = useState(false);
+
   useEffect(() => {
     if (inView && typedText.length < aboutHeader.length) {
       const timeout = setTimeout(() => {
@@ -325,10 +328,28 @@ export default function About() {
             {"/* Why did you choose to become a software engineer? */"}
           </SyntaxHighlighter>
           <div className="video-box">
-            <video width="100%" controls loop playsInline>
-              <source src={placeholder} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+            {hasVideo ? (
+              <video
+                width="100%"
+                controls
+                loop
+                playsInline
+                onError={() => setHasVideo(false)}
+              >
+                <source src={placeholder} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            ) : (
+              <div
+                style={{
+                  width: "100%",
+                  padding: "20px",
+                  textAlign: "center",
+                }}
+              >
+                Interview is coming...
+              </div>
+            )}
           </div>
         </div>
       </div>

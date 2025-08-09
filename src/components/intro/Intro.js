@@ -26,6 +26,7 @@ export default function Intro() {
   const [visibleP, setVisibleP] = useState(false);
   const [showImage, setShowImage] = useState(false);
   const [showTechIcons, setShowTechIcons] = useState(false);
+  const [hasVideo, setHasVideo] = useState(false);
   const codeRef = useRef(null);
 
   const techList = [
@@ -226,10 +227,28 @@ export default function Intro() {
         </SyntaxHighlighter>
 
         <div className="video-placeholder">
-          <video width="100%" controls loop playsInline>
-            <source src={placeholder} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+          {hasVideo ? (
+            <video
+              width="100%"
+              controls
+              loop
+              playsInline
+              onError={() => setHasVideo(false)}
+            >
+              <source src={placeholder} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          ) : (
+            <div
+              style={{
+                width: "100%",
+                padding: "20px",
+                textAlign: "center",
+              }}
+            >
+              Interview is coming...
+            </div>
+          )}
         </div>
       </div>
     </div>
