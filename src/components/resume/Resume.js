@@ -35,7 +35,6 @@ export default function Resume() {
           wrapLines
           lineNumberStyle={{ color: "#6d6d6d" }}
           PreTag="div"
-          className="resume-header-typing"
           ref={codeRef}
           customStyle={{
             padding: "20px",

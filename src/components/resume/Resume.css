@@ -81,11 +81,11 @@
   .resume-header {
     min-height: 50px;
     font-size: 1.1rem;
-    width: 100vw;
+    width: 100%;
   }
 
   .resume-header-typing {
-    width: 100vw;
+    width: 100%;
   }
 
   #resume > div.resume-header > div > code > span {
@@ -93,8 +93,8 @@
   }
 
   .resume-box {
-    width: 100vw;
-    max-width: 100vw;
+    width: 100%;
+    max-width: 100%;
   }
 
   .resume-download {

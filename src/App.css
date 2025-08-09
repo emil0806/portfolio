@@ -30,3 +30,15 @@ body {
   --type-color: #4ec9b0;
 }
 
+@media screen and (max-width: 680px) {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html, body {
+    overflow-x: hidden;
+  }
+}
+

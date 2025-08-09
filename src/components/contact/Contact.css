@@ -104,7 +104,7 @@
 @media (max-width: 600px) {
   .contact-section {
     padding: 20px 0px 40px 0px;
-    width: 100vw;
+    width: 100%;
   }
 
   .contact-header {
@@ -112,7 +112,7 @@
     min-height: 50px;
     font-size: 1.1rem;
     margin-bottom: 20px;
-    width: 100vw;
+    width: 100%;
   }
 
   #contact > div.contact-header > div > code > span {
@@ -145,7 +145,7 @@
   .contact-footer {
     font-size: 1rem;
     margin-top: 12px;
-    width: 100vw;
+    width: 100%;
   }
 
   #contact > div.contact-content > div.contact-footer > pre {
