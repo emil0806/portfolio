@@ -71,7 +71,7 @@
 
 @media (max-width: 600px) {
   .resume-section {
-    padding: 10px 4px;
+    padding: 10px 0px;
   }
 
   .resume-pdf { display: none; }

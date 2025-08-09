@@ -160,3 +160,28 @@
   }
 }
 
+@media (min-width: 901px) {
+  /* Center nav independently of right-side social icons */
+  .header {
+    position: sticky; /* already set */
+  }
+  .nav-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content; /* shrink to nav content */
+    pointer-events: auto;
+    z-index: 1;
+  }
+
+  /* Place left and right items explicitly so icons stay on the far right */
+  .mobile-left {
+    grid-column: 1;
+    justify-self: start;
+  }
+  .social-icons {
+    grid-column: 3;
+    justify-self: end;
+  }
+}
+
